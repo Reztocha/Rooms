@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=RockPaperScissors
+comment1.params=g
+comment1.target=RockPaperScissors(GUIEnvironment)
+comment1.text=\r\n\ Sets\ up\ the\ game\ of\ Rock,\ Paper,\ Scissors\r\n\ \r\n\ @param\ g\ The\ GUIEnvironment\ that\ the\ result\ of\ the\ game\ will\ be\ sent\ to\r\n
+comment2.params=a
+comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment2.text=\r\n\ Runs\ the\ comparison\ based\ on\ the\ player's\ choice\r\n\ Once\ that\ has\ happened,\ \r\n
+comment3.params=
+comment3.target=int\ checkGame()
+comment3.text=\r\n\ Uses\ some\ simple\ math\ to\ figure\ out\ who\ won\ the\ game\r\n\ \r\n\ @return\ 1\ for\ player\ win,\ 0\ for\ draw,\ -1\ for\ computer\ win\r\n
+numComments=4

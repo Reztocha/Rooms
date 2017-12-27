@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=MHashTable
+comment0.text=\r\n\ MHashTable.java\r\n\ A\ Hashtable\ class\ for\ storing\ Player\ instances.\ Hashes\ should\ be\ stored\ as\ Strings,\ and\ are\ generated\ from\ a\ combination\ of\ \r\n\ the\ player's\ name\ and\ timestamp,\ thus\ allowing\ for\ two\ players\ to\ have\ the\ same\ name.\r\n\ \r\n\ @author\ Christian\ Daher\r\n\ @param\ <K>\ key\r\n\ @param\ <V>\ value\r\n
+comment1.params=
+comment1.target=MHashTable()
+comment1.text=\r\n\ Initializes\ the\ master\ array\ with\ the\ default\ capacity\r\n
+comment2.params=c
+comment2.target=MHashTable(int)
+comment2.text=\r\n\ Initializes\ the\ master\ array\ with\ an\ externally\ defined\ capacity\r\n\ @param\ c\ capacity\r\n
+comment3.params=k\ v
+comment3.target=void\ put(java.lang.Object,\ java.lang.Object)
+comment3.text=\r\n\ Adds\ a\ value/key\ pair\ to\ the\ MHashTable\r\n\ Handles\ collisions\ through\ linear\ probing\r\n\ @param\ k\ key\r\n\ @param\ v\ value\r\n
+comment4.params=k
+comment4.target=java.lang.Object\ get(java.lang.Object)
+comment4.text=\r\n\ Takes\ a\ key\ and\ returns\ the\ corresponding\ value\r\n\ @param\ k\ key\r\n\ @return\ value\r\n
+comment5.params=k
+comment5.target=java.lang.Object\ remove(java.lang.Object)
+comment5.text=\r\n\ Takes\ a\ key,\ sets\ the\ corresponding\ value\ to\ null,\ and\ returns\ the\ value\r\n\ @param\ k\ key\r\n\ @return\ value\ that\ has\ just\ been\ removed\r\n
+numComments=6
