@@ -2,9 +2,11 @@ import java.net.URL;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Dimension;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import javax.swing.BorderFactory;
 import java.awt.image.BufferedImage;
 import javax.swing.BoxLayout;
 import java.io.*;
@@ -29,6 +31,10 @@ public class Room extends JPanel
         private ImageIcon image;
         private JLabel label;
         private URL file;
+        private int height;
+        private int width;
+        private int doorX;
+        private int doorY;
         
         /**
          * Constructor for objects of Door class
@@ -39,8 +45,9 @@ public class Room extends JPanel
             image = new ImageIcon(file);
             label = new JLabel(image);
             setBackground(transparent);
-            
-            setSize(22, 27);
+            height = 27;
+            width= 22;
+            setSize(width, height);
             add(label);
         }
         /**
@@ -51,18 +58,41 @@ public class Room extends JPanel
         {
             direction = p;
             switch(direction) {
-                case "left": setFile("leftdoor.png");  break;
-                case "right": setFile("rightdoor.png"); break;
-                case "up": setFile("upperdoor.png"); break;
-                case "down": setFile("lowerdoor.png"); break;
+                case "left":
+                    setFile("leftdoor.png"); 
+                    height = 27;
+                    width = 11;
+                    break;
+                case "right":
+                    setFile("rightdoor.png"); 
+                    height = 27;
+                    width = 11;
+                    break;
+                case "up":
+                    setFile("upperdoor.png");
+                    height = 16;
+                    width = 22;
+                    break;
+                case "down":
+                    setFile("lowerdoor.png");
+                    height = 16;
+                    width = 22;
+                    break;
             }
             image = new ImageIcon(file);
             label = new JLabel(image);
             setBackground(transparent);
             
             add(label);
-            setSize(22, 27);
+            setSize(width, height);
         }
+        
+        public int getHeight() {return height;}
+        public int getWidth() {return width;}
+        public void setDoorX(int x) {doorX = x;}
+        public void setDoorY(int y) {doorY = y;}
+        public int getDoorX() {return doorX;}
+        public int getDoorY() {return doorY;}
         
         /**
          * Sets the direction the door is in
@@ -184,6 +214,7 @@ public class Room extends JPanel
         add(inner);
     }
     
+    
     /**
      * Creates and sets the location of a door relative to Room
      * @param dir - Direction the door is inside of the room
@@ -192,18 +223,23 @@ public class Room extends JPanel
         Door d = new Door(dir);
         switch(d.getDirection()) {
             case "left":
-                d.setLocation(0-2,50-17);
+                d.setDoorX(3);
+                d.setDoorY(50-17);
                 break;
-            case "up": 
-                d.setLocation(50-12,0-2);
+            case "up":
+                d.setDoorX(50-12);
+                d.setDoorY(0-2);
                 break;
             case "down":
-                d.setLocation(50-12,100-18);
+                d.setDoorX(50-12);
+                d.setDoorY(100-18);
                 break;
             case "right":
-                d.setLocation(100-18,50-17);
+                d.setDoorX(100-14);
+                d.setDoorY(50-17);
                 break;
         }
+        d.setLocation(d.getDoorX(),d.getDoorY());
         add(d);
         doors.add(d);
     }

@@ -297,9 +297,20 @@ public class GUIEnvironment extends JFrame implements KeyListener, MouseListener
             
         }
         
-        for(int i=0; i< currentRoom.getAllDoors().size();i++) {
-            System.out.println(currentRoom.getAllDoors().get(i));
-        }
         */
+        for(int i = 0; i< currentRoom.getAllDoors().size(); i++) {
+            //System.out.println(currentRoom.getAllDoors().get(i));
+        
+            if((currentplayer.getX() >= currentRoom.getAllDoors().get(i).getDoorX() - 35)
+                && (currentplayer.getX() <= currentRoom.getAllDoors().get(i).getDoorX() + 35)
+                && (currentplayer.getY() >= currentRoom.getAllDoors().get(i).getDoorY() - 25)
+                && (currentplayer.getY() <= currentRoom.getAllDoors().get(i).getDoorY() + 25)) {
+                System.out.println("Close: " + currentRoom.getAllDoors().get(i).getDirection());
+                
+            }
+            else {
+                
+            }
+        }
     }
 }
