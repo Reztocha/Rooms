@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.*;
 import java.awt.event.*;
+import java.lang.Math;
 /**
  * All GUI elements go here.
  *
@@ -197,6 +198,13 @@ public class GUIEnvironment extends JFrame implements KeyListener, MouseListener
     public void setResult(int r) {
         rpsResult = r;
     }
+    /* distance calc
+     */
+    public int getDistance(int x1, int y1, int x2, int y2) {
+         int deltaX = x2-x1;
+         int deltaY = y2-y1;
+         return (int) Math.sqrt( Math.pow(deltaX, 2) + Math.pow(deltaY, 2) ); 
+     }
     @Override
     public void mouseClicked(MouseEvent e) {
         this.requestFocus();
@@ -292,24 +300,45 @@ public class GUIEnvironment extends JFrame implements KeyListener, MouseListener
     public void keyTyped(KeyEvent e)
     {
         contents.setFocusable(true);
-        /*
-        if(currentplayer.getX() instanceof Room.Door) {
-            
-        }
         
-        */
         for(int i = 0; i< currentRoom.getAllDoors().size(); i++) {
-            //System.out.println(currentRoom.getAllDoors().get(i));
-        
-            if((currentplayer.getX() >= currentRoom.getAllDoors().get(i).getDoorX() - 35)
-                && (currentplayer.getX() <= currentRoom.getAllDoors().get(i).getDoorX() + 35)
-                && (currentplayer.getY() >= currentRoom.getAllDoors().get(i).getDoorY() - 25)
-                && (currentplayer.getY() <= currentRoom.getAllDoors().get(i).getDoorY() + 25)) {
-                System.out.println("Close: " + currentRoom.getAllDoors().get(i).getDirection());
+            /*
+            int deltaX = Math.abs(currentRoom.getAllDoors().get(i).getDoorX() - 
+                     currentplayer.getX());
+            int deltaY = Math.abs(currentRoom.getAllDoors().get(i).getDoorY() + 3 - 
+                     currentplayer.getY());
+            if(deltaX <= 10 || deltaY <= 10) {
+                System.out.println(deltaX);
                 
-            }
-            else {
+                System.out.println(deltaY);
+                System.out.println("door!");
                 
+            }*/
+            /*
+                int doorY = currentRoom.getAllDoors().get(i).getDoorY() + 3;
+                int doorX = currentRoom.getAllDoors().get(i).getDoorX();
+                int d =  getDistance(cpX, cpY,doorX, doorY);
+            */
+            
+            int cpX = currentplayer.getX();
+            int cpY = currentplayer.getY();
+            
+            //If near another player, change to black
+            for(Player player : players) {
+                if(currentplayer.equals(player) == false && currentplayer.getRoom() == player.getRoom()) {
+                int dist = getDistance(cpX, cpY, player.getX(), player.getY());
+                    if(dist < 11) {
+                        currentplayer.setColor(Color.BLACK);
+                    }
+                    else {
+                        System.out.println("Nothing");
+                        System.out.println("Player position: " + currentplayer.getX()
+                                           + ", " + currentplayer.getY());
+                        System.out.println("Door position: " + 
+                                    currentRoom.getAllDoors().get(i).getDoorX() +
+                                    ", " + currentRoom.getAllDoors().get(i).getDoorY() );
+                    }
+                }
             }
         }
     }

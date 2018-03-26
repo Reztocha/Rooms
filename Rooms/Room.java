@@ -91,7 +91,22 @@ public class Room extends JPanel
         public int getWidth() {return width;}
         public void setDoorX(int x) {doorX = x;}
         public void setDoorY(int y) {doorY = y;}
+        
+        /**
+         * Gives x position of door's center within room 
+         */
+        public int getDoorCenterX() {return doorX + (int)(width/2);}
+        /**
+         * Gives y position of door's center within room
+         */
+        public int getDoorCenterY() {return doorY + (int)(height/2);}
+        /**
+         * Gives x position of door within room 
+         */
         public int getDoorX() {return doorX;}
+        /**
+         * Gives y position of door within room
+         */
         public int getDoorY() {return doorY;}
         
         /**
